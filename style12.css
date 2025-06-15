@@ -1,0 +1,341 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "aktiv-grotesk", sans-serif;
+  cursor: none;
+}
+
+body, html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.beach-scene {
+  height: 100vh;
+  background: url('experiencia12/Bg.mp4') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Shell Styles */
+.shell {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  background: no-repeat center;
+  background-size: contain;
+  transition: transform 0.8s ease;
+  z-index: 1;
+}
+
+.shell:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.shell1 {
+  background-image: url('experiencia12/Asset 3@4x.png');
+  top: 10vh;
+  left: 10vw;
+  width: 320px;
+  height: 320px;
+  transform: rotate(12deg);
+}
+
+.shell2 {
+  background-image: url('experiencia12/Asset 4@4x.png');
+  top: -5vh;
+  left: 25vw;
+  width: 700px;
+  height: 700px;
+  transform: rotate(-8deg);
+}
+
+.shell3 {
+  background-image: url('experiencia12/Asset 2@4x.png');
+  top: 50vh;
+  left: 05vw;
+  width: 500px;
+  height: 500px;
+  transform: rotate(25deg);
+}
+
+.shell4 {
+  background-image: url('experiencia12/Asset 5@4x.png');
+  top: 5vh;
+  left: 55vw;
+  width: 260px;
+  height: 260px;
+  transform: rotate(-15deg);
+}
+
+.shell5 {
+  background-image: url('experiencia12/Asset 6@4x.png');
+  top: 50vh;
+  left: 45vw;
+  width: 600px;
+  height: 600px;
+  transform: rotate(70deg);
+}
+
+.shell6 {
+  background-image: url('experiencia12/Asset 7@4x.png');
+  top: 0vh;
+  left: 70vw;
+  width: 650px;
+  height: 650px;
+  transform: rotate(-10deg);
+}
+
+.home {
+  user-select: none;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 6rem;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  line-height: 5.5rem;
+  z-index: 999;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 6rem;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.1rem;
+  pointer-events: auto;
+  display: inline-block;
+  width: 6rem;
+  height: 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.t_text{
+  font-weight: 300;
+  font-size: 1rem;
+  font-style: italic;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  pointer-events: none;
+}
+
+nav{
+  position: fixed;
+  top: 2.2rem;
+  margin-left: 1.9rem;
+  display: flex;
+  gap: 2rem;
+  align-items:start;
+  z-index: 9998;
+}
+
+.exp_intro{
+  display: block;
+}
+
+.button{
+  margin-top: 1rem;
+}
+
+/* Base ring */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border: 2px solid currentColor; 
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;                       
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: color 150ms ease;
+  z-index: 9999;
+}
+
+.cursor::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;            /* match ring stroke width */
+  width: calc(100% + 4px);           /* expand under the ring */
+  height: calc(100% + 4px);
+  border-radius: 50%;
+  background: transparent;
+  transition: background 150ms ease, clip-path 150ms ease;
+  z-index: 9998;                       /* behind the ring */
+}
+
+/* Hover state = half pie */
+.cursor.hover::after {
+  background: rgb(255, 255, 255) !important;
+  clip-path: polygon(50% 0%,100% 0%,100% 100%,50% 100%);
+  z-index: 9998;
+}
+
+/* Click state = full fill */
+.cursor.clicked::after {
+  background: currentColor;
+  clip-path: none;
+}
+
+@media (max-width: 768px) {
+
+  @media (max-width: 768px) {
+  .shell1 {
+    top: 5vh;
+    left: 5vw;
+    width: 180px;
+    height: 180px;
+    transform: rotate(10deg);
+  }
+
+  .shell2 {
+    top: 0vh;
+    left: 30vw;
+    width: 300px;
+    height: 300px;
+    transform: rotate(-5deg);
+  }
+
+  .shell3 {
+    top: 35vh;
+    left: 0vw;
+    width: 240px;
+    height: 240px;
+    transform: rotate(15deg);
+  }
+
+  .shell4 {
+    top: 20vh;
+    left: 65vw;
+    width: 150px;
+    height: 150px;
+    transform: rotate(-10deg);
+  }
+
+  .shell5 {
+    top: 68vh;
+    left: 5vw;
+    width: 280px;
+    height: 280px;
+    transform: rotate(60deg);
+    z-index: 99;
+  }
+
+  .shell6 {
+    top: 45vh;
+    left: 55vw;
+    width: 300px;
+    height: 300px;
+    transform: rotate(-5deg);
+  }
+}
+  
+  .home {
+    font-size: 3rem;
+    line-height: 3rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .arrow {
+    font-size: 3rem;
+    line-height: 0rem;
+    min-width: 88px;
+    min-height: 44px;
+  }
+
+  .t_text {
+    font-size: 0.75rem;
+  }
+
+  nav {
+    top: 1rem;
+    margin-left: 1rem;
+    gap: 1rem;
+    width: calc(100vw - 2rem);
+  }
+
+  .exp_intro {
+    width: calc(100vw - 5rem);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button{
+    margin-top: 0rem;
+    width: 4.5rem;
+  }
+
+  #myCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 4s ease;
+  }
+
+  .cursor {
+    display: none;
+  }
+  
+}
+
+@media (pointer: coarse) {
+  .tap-feedback {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: tap-pulse 0.4s ease-out forwards;
+    z-index: 9999;
+  }
+
+  @keyframes tap-pulse {
+    from { transform: scale(0.5) translate(-50%, -50%); opacity: 1; }
+    to { transform: scale(1.5) translate(-50%, -50%); opacity: 0; }
+  }
+}
+
+@media (max-width: 350px) {
+  .shell {
+    position: static;
+    display: block;
+    margin: 2rem auto;
+    transform: none !important;
+  }
+
+  .beach-scene {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+  }
+
+  body, html {
+    overflow: hidden;
+  }
+}

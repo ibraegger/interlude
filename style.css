@@ -1,0 +1,428 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "aktiv-grotesk", sans-serif;
+  cursor: none;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.front{
+    overflow: hidden;
+}
+
+.bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 80%;
+    z-index: -1;
+}
+
+.marg{
+    margin: 30px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-style: normal;
+}
+
+.l_text{
+    font-weight: 300;
+    font-style: italic;
+    font-size: 6rem;
+    text-transform: uppercase;
+}
+
+.m_text{
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.s_text{
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.t_text{
+    font-weight: 300;
+    font-size: 1.5rem;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    margin-bottom: 2rem;
+    padding-top: 18px;
+}
+
+.header {
+    display: inline-flex;
+    user-select: none;
+}
+
+.title {
+    white-space: nowrap;
+    max-width: 0;
+    overflow: hidden;
+    transition: max-width 0.5s ease;
+}
+
+.header:hover .title {
+    max-width: 9ch;
+}
+
+.reverse-title .title {
+    max-width: 9ch;
+}
+
+.reverse-title:hover .title {
+    max-width: 0;
+}
+
+.paren {
+    user-select: none;
+    pointer-events: none;
+}
+
+.link-container {
+    position: relative;
+    height: 100vh;
+}
+
+.link-container a {
+    position: absolute;
+    color: black;
+    white-space: nowrap;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr) 0.4fr;
+    gap: 1px;
+    height: 115vh;
+    width: 100vw;
+    background: rgb(0, 0, 0);
+    overflow: scroll;
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* Internet Explorer 10+ */
+}
+
+.grid-wrapper::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Opera */
+}
+
+.cell {
+    background: white;
+    padding: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.title-cell {
+    align-items: flex-start;
+    padding-top: 0;
+}
+
+.subtitle-cell {
+    display: flex;
+    justify-content: left;
+    text-align: right;
+}
+
+
+.marg_sub{
+    margin-top: 1.8rem;
+    margin-bottom: 3.75rem;
+}
+
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    border: 2px solid black; 
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+/* Hover*/
+.cursor.hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    border-radius: 50%;
+    clip-path: polygon(
+        50% 0%,
+        100% 0%,
+        100% 100%,
+        50% 100%,
+        50% 90%,
+        50% 10%
+    );
+}
+
+/* Click*/
+.cursor.clicked {
+    background: rgb(0, 0, 0);
+    clip-path: none;
+}
+
+.exp-cell {
+    position: relative;
+}
+
+.exp-item {
+    background: white;
+    padding: 1rem;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.exp-header {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    cursor: pointer;
+}
+
+.exp-code {
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    color: rgb(0, 0, 0);
+}
+
+/* Hidden content container */
+.extra-container {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    padding: 0rem 2rem 0rem 0.5rem;
+}
+
+/* Reveal on hover */
+.exp-item:hover .extra-container {
+    max-height: 900px; /* Adjust based on content */
+    opacity: 1;
+}
+
+/* Optional text styles */
+.extra-text, .credit {
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+
+.exp-item.rise-second:hover {
+    transform: translateY(-5rem);
+    z-index: 2;
+}
+
+.exp-item.rise-third:hover {
+    transform: translateY(-9rem);
+    z-index: 2;
+}
+
+#interlude-info {
+
+    background-color: white;
+    color: black;
+    z-index: 999;
+    opacity: 1 !important;
+    bottom: 0;
+    font-size: 0.8rem;
+}
+
+#credit {
+
+    background-color: white;
+    color: black;
+    z-index: 999;
+    opacity: 1 !important;
+    bottom: 0;
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+  
+    .l_text{
+        font-weight: 300;
+        font-style: italic;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        line-height: 4rem;
+ 
+    }
+
+    .m_text{
+        font-size: 1rem;
+
+    }
+
+    .s_text{
+        font-weight: 300;
+        font-size: 0.8rem;
+        padding-right: 1.2rem;
+    }
+
+    .t_text{
+        font-weight: 300;
+        font-size: 0.8rem;
+        font-style: italic;
+        text-transform: uppercase;
+        line-height: 1rem;
+        padding: 0rem;
+    }
+
+    .t_text a {
+        display: block;
+        margin: 0;
+        padding: 0;
+        line-height: 1rem;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        max-width: 100%;
+        }
+
+    nav{
+        display: block;
+        align-items: center;
+        height: 80px;
+        margin-bottom: 2rem;
+        padding-top: 0;
+    }
+
+    .link-container {
+        position: relative;
+        height: 100vh;
+    }
+
+    .marg{
+        margin: 1rem;
+        overflow-y: hidden;
+    }
+
+    .title {
+        max-width: 9ch !important;
+        transition: none !important;
+    }
+
+    .marg_sub{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .header:hover .title,
+    .reverse-title .title,
+    .reverse-title:hover .title {
+        max-width: 9ch !important;
+    }
+
+   .grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1.5fr repeat(6, 1.2fr); /* Let rows size based on content */
+    gap: 1px;
+    min-height: 300vh; /* Allow full height */
+    width: 100vw;
+    background: black;
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: none; /* Optional: hide scrollbar */
+  }
+
+  .grid-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+    .exp-code {
+        font-size: 0.8rem;
+    }
+
+    .cell {
+        padding: 1rem;
+    }
+
+    .subtitle-cell {
+        display: flex;
+        justify-content: left;
+        text-align: left;
+    }
+
+    #interlude-info {
+
+        background-color: white;
+        color: black;
+        z-index: 999;
+        opacity: 1 !important;
+        padding:1rem 2rem 2rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    #credit {
+        font-size: 0.8rem;
+        text-align: left;
+        padding:1rem 2.5rem 0rem 1rem;
+
+    }
+
+    .exp-item {
+        padding: 0rem;
+        margin-bottom: 2rem;
+    }
+
+    .exp-cell {
+        width: 100%;
+        padding-top: 3rem;
+    }
+
+    .extra-text, .credit {
+        font-size: 0.8rem;
+        margin-top: 1rem;
+    }
+
+    .exp-item:hover .extra-container {
+        max-height: 0 !important;
+        opacity: 0 !important;
+    }
+
+    .exp-item.rise-second:hover {
+        transform: translateY(0rem);
+    }
+
+    .exp-item.rise-third:hover {
+        transform: translateY(0rem);
+    }
+
+      .cursor {
+    display: none;
+  }
+
+}

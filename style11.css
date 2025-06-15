@@ -1,0 +1,279 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "aktiv-grotesk", sans-serif;
+    cursor: none;
+}
+    
+body {
+  margin: 0;
+  background: #0e0e0e;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin: 2rem 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 8rem;
+}
+
+.glitch-box {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.image-layer {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.img-normal,
+.img-glitched {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.img-glitched {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.glitch-box:hover .img-normal {
+  opacity: 0;
+}
+
+.glitch-box:hover .img-glitched {
+  opacity: 1;
+}
+
+.poem {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  color: #f9f9f9;
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+  transition: opacity 0.5s ease;
+  background: rgba(0, 0, 0, 0.6);
+  font-style: italic;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.glitch-box:hover .poem {
+  opacity: 1;
+}
+
+.glitch-box:nth-child(1):hover .img-glitched {
+  filter: invert(0.8) brightness(1.1) contrast(1.2) sepia(0.1);
+}
+
+.glitch-box:nth-child(2):hover .img-glitched {
+  filter: hue-rotate(200deg) saturate(1.4) brightness(1.1);
+}
+
+.glitch-box:nth-child(3):hover .img-glitched {
+  filter: sepia(0.8) contrast(1.4) brightness(0.95);
+}
+
+.glitch-box:nth-child(4):hover .img-glitched {
+  filter: invert(0.9) hue-rotate(150deg) brightness(1.2);
+}
+
+.home {
+  user-select: none;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 6rem;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  line-height: 5.5rem;
+  z-index: 999;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 6rem;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.1rem;
+  pointer-events: auto;
+  display: inline-block;
+  width: 6rem;
+  height: 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.t_text{
+  font-weight: 300;
+  font-size: 1rem;
+  font-style: italic;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  pointer-events: none;
+}
+
+nav{
+  position: fixed;
+  top: 2.2rem;
+  margin-left: 1.9rem;
+  display: flex;
+  gap: 2rem;
+  align-items:start;
+  z-index: 9998;
+}
+
+.exp_intro{
+  display: block;
+}
+
+.button{
+  margin-top: 1rem;
+}
+
+/* Base ring */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border: 2px solid currentColor; 
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;                       
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: color 150ms ease;
+  z-index: 9999;
+}
+
+.cursor::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;            /* match ring stroke width */
+  width: calc(100% + 4px);           /* expand under the ring */
+  height: calc(100% + 4px);
+  border-radius: 50%;
+  background: transparent;
+  transition: background 150ms ease, clip-path 150ms ease;
+  z-index: 9998;                       /* behind the ring */
+}
+
+/* Hover state = half pie */
+.cursor.hover::after {
+  background: rgb(255, 255, 255) !important;
+  clip-path: polygon(50% 0%,100% 0%,100% 100%,50% 100%);
+  z-index: 9998;
+}
+
+/* Click state = full fill */
+.cursor.clicked::after {
+  background: currentColor;
+  clip-path: none;
+}
+
+@media (max-width: 768px) {
+  
+  .home {
+    font-size: 3rem;
+    line-height: 3rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .arrow {
+    font-size: 3rem;
+    line-height: 0rem;
+    min-width: 88px;
+    min-height: 44px;
+  }
+
+  .t_text {
+    font-size: 0.75rem;
+  }
+
+  nav {
+    top: 1rem;
+    margin-left: 1rem;
+    gap: 1rem;
+    width: calc(100vw - 2rem);
+  }
+
+  .exp_intro {
+    width: calc(100vw - 5rem);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button{
+    margin-top: 0rem;
+    width: 4.5rem;
+  }
+
+  #myCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 4s ease;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    margin-top: 6rem;
+  }
+
+  .image-layer img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .poem {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}

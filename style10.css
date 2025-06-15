@@ -1,0 +1,413 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: black;
+    font-family: "aktiv-grotesk", sans-serif;
+    cursor: none;
+}
+
+p {
+    padding: 2px;
+    margin: 1px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+:root {
+    --bg-color: rgba(38, 34, 54, 0.9);
+    --text-color: #e0e0e0;
+    --accent: hwb(64 66% 0%);
+    --hover-accent: #ffe481;
+    --border: rgba(255, 255, 255, 0.15);
+    --glow: rgba(168, 216, 255, 0.25);
+}
+
+#control-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 240px;
+    height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 24px 18px;
+    box-shadow: -5px 0 20px rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.5s ease;
+    z-index: 1000;
+    border-left: 1px solid var(--border);
+}
+
+#control-panel button {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-color);
+    border: 1px solid var(--border);
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    transition: all 0.25s ease;
+    box-shadow: 0 0 5px rgba(168, 216, 255, 0.05);
+    text-transform: uppercase;
+    font-weight: 300;
+    font-style: italic;
+}
+
+#control-panel button:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--hover-accent);
+    border-color: rgba(168, 216, 255, 0.2);
+    box-shadow: 0 0 10px var(--glow);
+}
+
+#control-panel button:active {
+    transform: scale(0.98);
+}
+
+#dot-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+}
+
+.dot-twinkle {
+    animation: twinkleIn 0.6s ease-out;
+}
+
+@keyframes twinkleIn {
+    0% { transform: scale(2); opacity: 0; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.aurora-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2; /* above canvas, below UI */
+}
+
+.aurora {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: radial-gradient(ellipse at center, rgba(100,255,200,0.25) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(100px);
+    animation: auroraWave 18s ease-in-out infinite alternate, auroraHue 60s linear infinite;
+    transform: rotate(10deg);
+    mix-blend-mode: screen;
+    opacity: 0.5;
+}
+
+.aurora.delay {
+    animation-delay: 9s, 0s;
+    opacity: 0.6;
+}
+
+@keyframes auroraWave {
+    0% { transform: translateX(-15%) rotate(10deg); }
+    100% { transform: translateX(15%) rotate(-10deg); }
+}
+
+@keyframes auroraHue {
+    0% { filter: blur(100px) hue-rotate(0deg); }
+    100% { filter: blur(100px) hue-rotate(360deg); }
+}
+
+.sonar-ring {
+    position: absolute;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sonar-ping 10s ease-out infinite;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
+}
+
+@keyframes sonar-ping {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+
+.home {
+  user-select: none;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 6rem;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  line-height: 5.5rem;
+  z-index: 999;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 6rem;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.1rem;
+  pointer-events: auto;
+  display: inline-block;
+  width: 6rem;
+  height: 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.t_text{
+  font-weight: 300;
+  font-size: 1rem;
+  font-style: italic;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  pointer-events: none;
+}
+
+nav{
+  position: fixed;
+  top: 2.2rem;
+  margin-left: 1.9rem;
+  display: flex;
+  gap: 2rem;
+  align-items:start;
+  z-index: 9998;
+}
+
+.exp_intro{
+  display: block;
+}
+
+.button{
+  margin-top: 1rem;
+}
+
+/* Base ring */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border: 2px solid currentColor; 
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;                       
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: color 150ms ease;
+  z-index: 9999;
+}
+
+.cursor::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;            /* match ring stroke width */
+  width: calc(100% + 4px);           /* expand under the ring */
+  height: calc(100% + 4px);
+  border-radius: 50%;
+  background: transparent;
+  transition: background 150ms ease, clip-path 150ms ease;
+  z-index: 9998;                       /* behind the ring */
+}
+
+/* Hover state = half pie */
+.cursor.hover::after {
+  background: rgb(255, 255, 255) !important;
+  clip-path: polygon(50% 0%,100% 0%,100% 100%,50% 100%);
+  z-index: 9998;
+}
+
+/* Click state = full fill */
+.cursor.clicked::after {
+  background: currentColor;
+  clip-path: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: var(--bg-color);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid var(--border);
+  width: 90%;
+  max-width: 400px;
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--glow);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.modal-content p {
+  font-size: 14px;
+  font-weight: 300;
+  margin: 5px 0;
+}
+
+.close-btn {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--hover-accent);
+}
+
+#help-btn {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+
+   #control-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px 20px;
+    box-shadow: 0 -5px 20px rgba(255, 255, 255, 0.6);
+    border-top: 1px solid var(--border);
+    background: var(--bg-color);
+  }
+
+  #control-panel p {
+    display: none;
+  }
+
+  #control-panel button {
+    flex: 1 1 20%;
+    margin: 4px;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  
+  .home {
+    font-size: 3rem;
+    line-height: 3rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .arrow {
+    font-size: 3rem;
+    line-height: 0rem;
+    min-width: 88px;
+    min-height: 44px;
+  }
+
+  .t_text {
+    font-size: 0.75rem;
+  }
+
+  nav {
+    top: 1rem;
+    margin-left: 1rem;
+    gap: 1rem;
+    width: calc(100vw - 2rem);
+  }
+
+  .exp_intro {
+    width: calc(100vw - 5rem);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button{
+    margin-top: 0rem;
+    width: 4.5rem;
+  }
+
+  #myCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 4s ease;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+}
+  
+/* Show help button only on mobile */
+@media (max-width: 768px) {
+  #help-btn {
+    display: block;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--hover-accent);
+    font-size: 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    position: fixed;
+    bottom: 150px;
+    right: 20px;
+    z-index: 1500;
+    box-shadow: 0 0 8px var(--glow);
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}

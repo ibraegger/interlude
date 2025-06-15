@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  cursor: none;
+  font-family: "aktiv-grotesk", sans-serif;
+}
+
+canvas {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+
+.toggle-container {
+  position: fixed;
+  bottom: 4rem;
+  right: 6rem;
+  z-index: 10;
+}
+
+#themeToggle {
+  display: none;
+}
+
+.toggle-slider {
+  width: 60px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 30px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.toggle-slider::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: rgb(0, 0, 0);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: left 0.3s ease, background 0.3s ease;
+}
+
+#themeToggle:checked + .toggle-slider {
+  background: #444;
+}
+
+#themeToggle:checked + .toggle-slider::before {
+  background: #ffffff;
+  left: 33px;
+}
+
+.home {
+  user-select: none;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 6rem;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  line-height: 5.5rem;
+  z-index: 999;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 6rem;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.1rem;
+  pointer-events: auto;
+  display: inline-block;
+  width: 6rem;
+  height: 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.t_text{
+  font-weight: 300;
+  font-size: 1rem;
+  font-style: italic;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  pointer-events: none;
+}
+
+nav{
+  position: fixed;
+  top: 2.2rem;
+  margin-left: 1.9rem;
+  display: flex;
+  gap: 2rem;
+  align-items:start;
+  z-index: 9998;
+}
+
+.exp_intro{
+  display: block;
+}
+
+.button{
+  margin-top: 1rem;
+}
+
+/* Base ring */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border: 2px solid currentColor; 
+  border-radius: 50%;
+  background: transparent;
+  color: #000000;                       
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: color 150ms ease;
+  z-index: 9999;
+}
+
+.cursor::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;            /* match ring stroke width */
+  width: calc(100% + 4px);           /* expand under the ring */
+  height: calc(100% + 4px);
+  border-radius: 50%;
+  background: transparent;
+  transition: background 150ms ease, clip-path 150ms ease;
+  z-index: 9998;                       /* behind the ring */
+}
+
+/* Hover state = half pie */
+.cursor.hover::after {
+  background: currentColor !important;
+  clip-path: polygon(50% 0%,100% 0%,100% 100%,50% 100%);
+  z-index: 9998;
+}
+
+/* Click state = full fill */
+.cursor.clicked::after {
+  background: currentColor;
+  clip-path: none;
+}
+
+@media (max-width: 768px) {
+  
+  .home {
+    font-size: 3rem;
+    line-height: 3rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .arrow {
+    font-size: 3rem;
+    line-height: 0rem;
+    min-width: 88px;
+    min-height: 44px;
+  }
+
+  .t_text {
+    font-size: 0.75rem;
+  }
+
+  nav {
+    top: 1rem;
+    margin-left: 1rem;
+    gap: 1rem;
+    width: calc(100vw - 2rem);
+  }
+
+  .exp_intro {
+    width: calc(100vw - 5rem);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button{
+    margin-top: 0rem;
+    width: 4.5rem;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .toggle-container {
+    bottom: 3rem;
+    right: 4.5rem;
+  }
+
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}

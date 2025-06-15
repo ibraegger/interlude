@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/kjp7zst.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <link rel="stylesheet" href="style10.css">
+    <title>Whispers of the Night Sky</title>
+</head>
+
+<body class="front">
+
+    <nav>
+        
+        <div class="home"><a href="index.html" class="home">(&nbsp;&nbsp;)</a></div>
+
+        <div class="exp_intro">
+
+            <p class="t_text">Whispers of the Night Sky</p>
+            <div class="button">
+                <button id="next" aria-label="Go to random experience" class="arrow">→</button>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <canvas id="stars"></canvas>
+
+    <div class="aurora-wrapper">
+
+        <div class="aurora"></div>
+
+        <div class="aurora delay"></div>
+
+    </div>
+
+    <canvas id="constellation"></canvas>
+
+    <div id="sonar-ring" class="sonar-ring" style="display:none;"></div>
+
+    <div id="dot-overlay"></div>
+
+    <div id="control-panel">
+
+        <button id="add-dot-btn">Add Star</button>
+        <button id="randomize-btn">Clear Stars</button>
+        <button id="clear-btn">Clear Connections</button>
+        <button id="finalize-btn">Finalize</button>
+        <button id="screenshot-btn">Screenshot</button>
+
+        <br>
+
+        <p>Press <b>Add Star</b> to create a star. </p>
+        <p>Click on the star to draw your constellation line.</p>
+        <p>Drag the stars to reposition them.</p>
+        <p>Press <b>Finalize</b> to make your constellation light up. </p>
+        <p>Press <b>Finalize</b> again if you want to make changes.</p>
+        <p>Press <b>Clear Connections</b> to delete all connections.</p>
+        <p>Press <b>Clear Stars</b> to delete all current stars.</p>
+
+        <button id="help-btn" aria-label="Instructions">?</button>
+
+    </div>
+
+    <audio id="bg-music" src="experiencia10/bg_music_loop.mp3" loop autoplay></audio>
+
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Instructions</h3>
+            <p>Press <b>Add Star</b> to create a star.</p>
+            <p>Click on the star to draw your constellation line.</p>
+            <p>Drag the stars to reposition them.</p>
+            <p>Press <b>Finalize</b> to make your constellation light up.</p>
+            <p>Press <b>Finalize</b> again if you want to make changes.</p>
+            <p>Press <b>Clear Connections</b> to delete all connections.</p>
+            <p>Press <b>Clear Stars</b> to delete all current stars.</p>
+        </div>
+    </div>
+
+    <script src="sketch10.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/kjp7zst.css">
+    <link rel="stylesheet" href="style04.css">
+    <title>Precipitation as an Art</title>
+</head>
+
+<body>
+
+    <nav>
+        
+        <div class="home"><a href="index.html" class="home">(&nbsp;&nbsp;)</a></div>
+
+        <div class="exp_intro">
+
+            <p class="t_text">Precipitation as an Art</p>
+            <div class="button">
+                <button id="next" aria-label="Go to random experience" class="arrow">→</button>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="control-panel">
+
+       <div class="wrapper">
+
+            <div class="slider">
+
+                <label for="speedSlider">Time of Day</label>
+                <input id="timeSlider" type="range" min="0" max="3" step="0.01" value="1">
+
+            </div>
+
+            <div class="slider">
+
+                <label for="dropSlider">Density</label>
+                <input type="range" id="dropSlider" min="100" max="3000" value="1000" step="100">
+
+            </div>
+
+            <div class="slider">
+
+                <label for="speedSlider">Speed</label>
+                <input type="range" id="speedSlider" min="0.5" max="10" step="0.5" value="1" >
+
+            </div>
+
+       </div>
+
+        <div id="mouseModeButtons">
+
+            <button id="attractBtn" class="titles">Attract</button>
+            <button id="neutralBtn" class="titles">Neutral</button>
+            <button id="repelBtn" class="titles">Repel</button>
+
+        </div>
+
+        <div class="m_container">
+
+            <div>
+
+                <label for="button-panel">Direction</label>
+
+                <div class="button-panel">
+
+                    <div class="circle" data-x="-1" data-y="-1"></div>
+                    <div class="circle" data-x="0" data-y="-1"></div>
+                    <div class="circle" data-x="1" data-y="-1"></div>
+
+                    <div class="circle" data-x="-1" data-y="0"></div>
+                    <div class="circleinv" data-x="0" data-y="0"></div>
+                    <div class="circle" data-x="1" data-y="0"></div>
+
+                    <div class="circle" data-x="-1" data-y="1"></div>
+                    <div class="circle" data-x="0" data-y="1"></div>
+                    <div class="circle" data-x="1" data-y="1"></div>
+
+                </div>
+
+            </div>
+
+            <div class="s_container">
+        
+                <button id="cloudyToggleBtn">☁️</button>
+                <button id="muteButton">🔊</button>
+                
+            </div>
+
+        </div>
+
+        
+    </div>
+
+    <script src="sketch04.js"></script>
+    
+</body>
+
+</html>

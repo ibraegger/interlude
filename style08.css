@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "aktiv-grotesk", sans-serif;
+  cursor: none;
+}
+
+body{
+  display: block;
+  align-content: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 80vh;
+  z-index: -1;
+}
+
+.home {
+  user-select: none;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 6rem;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  line-height: 5.5rem;
+  z-index: 999;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 6rem;
+  font-weight: 300;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.1rem;
+  pointer-events: auto;
+  display: inline-block;
+  width: 6rem;
+  height: 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.t_text{
+  font-weight: 300;
+  font-size: 1rem;
+  font-style: italic;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  pointer-events: none;
+}
+
+nav{
+  position: fixed;
+  top: 2.2rem;
+  margin-left: 1.9rem;
+  display: flex;
+  gap: 2rem;
+  align-items:start;
+  z-index: 9998;
+  background-color: transparent;
+}
+
+.exp_intro{
+  display: block;
+}
+
+.button{
+  margin-top: 1rem;
+}
+
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border: 2px solid currentColor; 
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;                       
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: color 150ms ease;
+  z-index: 9999;
+}
+
+.cursor::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;            /* match ring stroke width */
+  width: calc(100% + 4px);           /* expand under the ring */
+  height: calc(100% + 4px);
+  border-radius: 50%;
+  background: transparent;
+  transition: background 150ms ease, clip-path 150ms ease;
+  z-index: 9998;                       /* behind the ring */
+}
+
+/* Hover state = half pie */
+.cursor.hover::after {
+  background: rgb(255, 255, 255) !important;
+  clip-path: polygon(50% 0%,100% 0%,100% 100%,50% 100%);
+  z-index: 9998;
+}
+
+/* Click state = full fill */
+.cursor.clicked::after {
+  background: currentColor;
+  clip-path: none;
+}
+
+@media (max-width: 768px) {
+  
+  .home {
+    font-size: 3rem;
+    line-height: 3rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .arrow {
+    font-size: 3rem;
+    line-height: 0rem;
+    min-width: 88px;
+    min-height: 44px;
+  }
+
+  .t_text {
+    font-size: 0.75rem;
+  }
+
+  nav {
+    top: 1rem;
+    margin-left: 1rem;
+    gap: 1rem;
+    width: calc(100vw - 2rem);
+  }
+
+  .exp_intro {
+    width: calc(100vw - 5rem);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button{
+    margin-top: 0rem;
+    width: 4.5rem;
+  }
+
+  #myCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 4s ease;
+  }
+
+  .cursor {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/kjp7zst.css">
+    <link rel="stylesheet" href="style03.css">
+    <title>Dance of Breath and Form</title>
+</head>
+
+<body>
+
+    <audio id="breathAudio" src="experiencia03/breathing.wav" preload="auto" autoplay loop></audio>
+
+    <nav>
+        
+        <div class="home"><a href="index.html" class="home">(&nbsp;&nbsp;)</a></div>
+
+        <div class="exp_intro">
+
+            <p class="t_text">Dance of Breath and Form</p>
+            <div class="button">
+                <button id="next" aria-label="Go to random experience" class="arrow">→</button>
+            </div>
+
+        </div>
+
+    </nav>
+    
+    <div class="toggle-container">
+
+        <input type="checkbox" id="themeToggle">
+        <label for="themeToggle" class="toggle-slider"></label>
+        
+    </div>
+
+    <canvas id="myCanvas"></canvas>
+
+    <script src="sketch03.js"></script>
+
+</body>
+
+</html>
